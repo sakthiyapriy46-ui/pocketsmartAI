@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PocketSmart AI</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#0f172a;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:90%;max-width:400px;background:#1e293b;padding:20px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+h1{text-align:center;color:#8b5cf6}
+#chat{height:300px;overflow-y:auto;background:#0f172a;padding:10px;border-radius:10px;margin:10px 0}
+.msg{margin:8px 0;padding:8px 12px;border-radius:12px;max-width:80%}
+.user{background:#8b5cf6;margin-left:auto}
+.ai{background:#334155}
+.input-area{display:flex;gap:10px}
+input{flex:1;padding:12px;border-radius:10px;border:none;outline:none}
+button{padding:12px 18px;border:none;border-radius:10px;background:#8b5cf6;color:white;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>PocketSmart AI 🤖</h1>
+<div id="chat"><div class="msg ai">Hi! I'm PocketSmart AI. Ask me anything!</div></div>
+<div class="input-area">
+<input id="input" placeholder="Type your question...">
+<button onclick="send()">Send</button>
+</div>
+</div>
+<script>
+function send(){
+ let inp=document.getElementById('input');
+ let chat=document.getElementById('chat');
+ if(!inp.value) return;
+ chat.innerHTML+=`<div class="msg user">${inp.value}</div>`;
+ let q=inp.value.toLowerCase();
+ let ans="I am PocketSmart AI, your pocket assistant! I can help with studies, coding, and ideas.";
+ if(q.includes("hello")) ans="Hello! 👋 How can I help you today?";
+ if(q.includes("name")) ans="I am PocketSmart AI created by Sakthiya Priya!";
+ if(q.includes("python")) ans="Python is a powerful language for AI, web dev and automation.";
+ setTimeout(()=>{chat.innerHTML+=`<div class="msg ai">${ans}</div>`;chat.scrollTop=chat.scrollHeight},500);
+ inp.value='';
+ chat.scrollTop=chat.scrollHeight;
+}
+</script>
+</body>
+</html>
